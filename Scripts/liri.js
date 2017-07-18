@@ -1,10 +1,7 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Untitled Document</title>
-</head>
+// Grabs the bands variables
+var keys = require("./keys.js");
 
-<body>
-</body>
-</html>
+// Gets all of myBands bands from the bands file.
+var keyList = keys.twitterKeys;
+
+console.log(keyList.consumer_secret)
