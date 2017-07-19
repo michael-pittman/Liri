@@ -24,10 +24,6 @@ var getTweets = function(){
     });
 };
 
-//var getArtistNames = function(artists) {
-//    return artist.name;
-//}
-
 var getSong = function(songName){
     var spotify = new Spotify(keyListSpot);
 
@@ -38,11 +34,12 @@ var getSong = function(songName){
                 for(var i=0; i<songs.length; i++){
                  
                 console.log(i);
-//                console.log('artist: ' + songs[i].artists.map(getArtistNames));
-//                console.log('song name: ' + songs[i].name);
-//                console.log('preview song: ' + songs[i].preview_url);
-//                console.log('album: ' + songs[i].album.name);
-//                console.log('_______________________________________________');
+                console.log('artist: ' + songs[i].artists[0].name);
+                console.log('song name: ' + songs[i].name);
+                console.log('album: ' + songs[i].album.name);
+                console.log('popularity: ' + songs[i].popularity);
+                console.log('link: ' + songs[i].href);
+                console.log('_______________________________________________');
              
               }  
           })
