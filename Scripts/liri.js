@@ -8,6 +8,8 @@ var keyListSpot = keys.spotifyKeys;
 var Spotify = require('node-spotify-api');
 
 var Twitter = require('twitter');
+
+var request = require('request');
  
 var client = new Twitter(keyList);
  
@@ -39,14 +41,23 @@ var getSong = function(songName){
                 console.log('album: ' + songs[i].album.name);
                 console.log('popularity: ' + songs[i].popularity);
                 console.log('link: ' + songs[i].href);
-                console.log('_______________________________________________');
+                console.log('______________________________________________________________\n');
              
               }  
           })
           .catch(function(err) {
             console.log(error);
           });
-};
+}
+
+var getMovie = function(movieName) {
+request('http://www.omdbapi.com/?apikey=40e9cece&t='+ movieName, function (error, response, body) {  
+  var jsonData = JSON.parse(body)
+    console.log('title: ' + jsonData.Title);
+    console.log('plot: ' + jsonData.Plot); 
+    console.log('rating: ' + jsonData.Metascore); 
+});
+}
 
 var pick = function(caseData, functionData) {
     switch(caseData) {
@@ -55,6 +66,9 @@ var pick = function(caseData, functionData) {
                 break;
         case 'spotify-this-song' :
                 getSong(functionData);
+                break;
+        case 'movie-this' :
+                getMovie(functionData);
                 break;
         default:
         console.log("Liri doesn't know that, yet...")
