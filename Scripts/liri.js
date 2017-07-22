@@ -16,13 +16,13 @@ var client = new Twitter(keyList);
 var getTweets = function(){ 
     var params = {screen_name: 'mcxviiv'};
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
-    if (!error) {
-    console.log(tweets);
+//    if (!error) {
+//    console.log(error);
     for(var i=0; i<tweets.length; i++) {
-        console.log(tweets[i].text);
-        console.log(tweets[i].created_at + "\n");
+        console.log("\n" + tweets[i].text);
+        console.log(tweets[i].created_at);
     }
-    }
+//    }
     });
 };
 
@@ -53,9 +53,10 @@ var getSong = function(songName){
 var getMovie = function(movieName) {
 request('http://www.omdbapi.com/?apikey=40e9cece&t='+ movieName, function (error, response, body) {  
   var jsonData = JSON.parse(body)
+    console.log('\n');
     console.log('title: ' + jsonData.Title);
     console.log('plot: ' + jsonData.Plot); 
-    console.log('rating: ' + jsonData.Metascore); 
+    console.log('rating: ' + jsonData.Metascore+ "\n"); 
 });
 }
 
